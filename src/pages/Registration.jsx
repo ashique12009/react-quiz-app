@@ -1,10 +1,14 @@
 import React from "react";
 
-const Login = () => {
+const Registration = () => {
   return (
     <div>
-      <h1 className="text-center">Quiz App - Login</h1>
+      <h1 className="text-center">Quiz App - Registration</h1>
       <form className="login-form">
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required />
@@ -14,19 +18,11 @@ const Login = () => {
           <input type="password" id="password" name="password" required />
         </div>
         <button type="submit" className="login-button">
-          Login
+          Register
         </button>
-        <div className="additional-links">
-          <a href="#" className="forgot-password">
-            Forgot Password?
-          </a>
-          <a href="#" className="register-link">
-            Don't have an account? Register
-          </a>
-        </div>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Registration;
