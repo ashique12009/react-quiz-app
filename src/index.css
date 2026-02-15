@@ -86,6 +86,14 @@ body{
 .login-button:active {
   transform: scale(0.98);
 }
+.additional-links {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 /* Common styles */
 .mt10{
