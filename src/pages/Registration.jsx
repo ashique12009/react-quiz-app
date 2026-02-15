@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
 
 const Registration = () => {
   const { registerUser } = useUser();
+
+  const navigate = useNavigate();
 
   // Handle form submission (you can replace this with actual registration logic)
   const handleSubmit = (e) => {
@@ -17,8 +19,11 @@ const Registration = () => {
 
     registerUser({ name, email, password });
 
+    // Navigate to the login page after successful registration
+    navigate("/login");
+
     // Reset the form after submission
-    e.target.reset();
+    // e.target.reset();
   };
 
   return (
