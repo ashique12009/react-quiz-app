@@ -1,11 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useUser from "../hooks/userHooks";
 
 const Registration = () => {
+  const { registerUser } = useUser();
+
+  // Handle form submission (you can replace this with actual registration logic)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    registerUser({ name, email, password });
+
+    // Reset the form after submission
+    e.target.reset();
+  };
+
   return (
     <div>
       <h1 className="text-center">Quiz App - Registration</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" required />
