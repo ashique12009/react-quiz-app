@@ -86,8 +86,8 @@ body{
 .login-button:active {
   transform: scale(0.98);
 }
-.additional-links {
-  margin-top: 12px;
+.additional-links, .forgot-password, .register-link {
+  margin-top: 6px;
   text-align: center;
   font-size: 13px;
   display: flex;
