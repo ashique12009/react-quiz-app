@@ -1,13 +1,25 @@
 export const getAuthUser = () => {
-  const user = localStorage.getItem("authUser");
-  return user ? JSON.parse(user) : null;
+  const raw = localStorage.getItem("authUser");
+
+  console.log("getAuthUser called", { raw });
+
+  if (!raw || raw === "undefined" || raw === "null") {
+    return null;
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    return null;
+  }
 };
 
 export const isAuthenticated = () => {
-  return getAuthUser() !== null;
+  return Boolean(getAuthUser());
 };
 
 export const setAuthUser = (user) => {
+  if (!user) return;
   localStorage.setItem("authUser", JSON.stringify(user));
 };
 

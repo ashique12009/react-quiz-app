@@ -1,18 +1,25 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, Route, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
 import { hashPassword } from "../utils/hash";
+import { setAuthUser } from "../auth/auth";
+import { isAuthenticated } from "../auth/auth";
 
 const Login = () => {
   const { fetchUserByEmail } = useUser();
-  const navigate = useNavigate();
+
+  console.log("Login component rendered", { isAuthenticated: isAuthenticated() });
+
+  if (isAuthenticated()) {
+    return <Navigate to="/quiz" replace />;
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
     // Collect email and password from the form
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
+
     if (!email || !password) {
       alert("Please fill in all fields.");
       return;
@@ -25,8 +32,7 @@ const Login = () => {
 
     if (user && user.password === hashedPassword) {
       // Store user information in localStorage
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/quiz"); // Navigate to the dashboard or home page after successful login
+      setAuthUser(user);
     } else {
       alert("Invalid email or password.");
     }
