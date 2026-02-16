@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
-import CryptoJS from "crypto-js";
+import { hashPassword } from "../utils/hash";
 
 const Registration = () => {
   const { registerUser } = useUser();
@@ -32,10 +32,6 @@ const Registration = () => {
 
     // Reset the form after submission
     // e.target.reset();
-  };
-
-  const hashPassword = (password) => {
-    return CryptoJS.SHA256(password).toString();
   };
 
   return (

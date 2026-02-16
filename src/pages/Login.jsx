@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
+import { hashPassword } from "../utils/hash";
 
 const Login = () => {
+  const { fetchUserByEmail } = useUser();
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Collect email and password from the form
     const email = e.target.email.value;
@@ -14,8 +17,19 @@ const Login = () => {
       alert("Please fill in all fields.");
       return;
     }
-    // Here you would typically call an API to authenticate the user
 
+    const hashedPassword = hashPassword(password);
+
+    // You can add your authentication logic here (e.g., call an API, set user state, etc.)
+    const user = await fetchUserByEmail(email);
+
+    if (user && user.password === hashedPassword) {
+      // Store user information in localStorage
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("/quiz"); // Navigate to the dashboard or home page after successful login
+    } else {
+      alert("Invalid email or password.");
+    }
   };
 
   return (
