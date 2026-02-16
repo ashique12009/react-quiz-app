@@ -1,8 +1,6 @@
 export const getAuthUser = () => {
   const raw = localStorage.getItem("authUser");
 
-  console.log("getAuthUser called", { raw });
-
   if (!raw || raw === "undefined" || raw === "null") {
     return null;
   }

@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, Navigate, Route, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
 import { hashPassword } from "../utils/hash";
 import { setAuthUser } from "../auth/auth";
@@ -7,8 +6,7 @@ import { isAuthenticated } from "../auth/auth";
 
 const Login = () => {
   const { fetchUserByEmail } = useUser();
-
-  console.log("Login component rendered", { isAuthenticated: isAuthenticated() });
+  const navigate = useNavigate();
 
   if (isAuthenticated()) {
     return <Navigate to="/quiz" replace />;
@@ -33,6 +31,7 @@ const Login = () => {
     if (user && user.password === hashedPassword) {
       // Store user information in localStorage
       setAuthUser(user);
+      navigate("/quiz", { replace: true });
     } else {
       alert("Invalid email or password.");
     }
