@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   if (isAuthenticated()) {
-    return <Navigate to="/quiz" replace />;
+    return <Navigate to="/quiz-dashboard" replace />;
   }
 
   const handleLogin = async (e) => {
@@ -31,7 +31,7 @@ const Login = () => {
     if (user && user.password === hashedPassword) {
       // Store user information in localStorage
       setAuthUser(user);
-      navigate("/quiz", { replace: true });
+      navigate("/quiz-dashboard", { replace: true });
     } else {
       alert("Invalid email or password.");
     }

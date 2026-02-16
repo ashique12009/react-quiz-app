@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
-import QuizPage from "./pages/QuizPage";
+import QuizDashboard from "./pages/QuizDashboard";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
+import Notfound from "./pages/Notfound";
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
 
             {/* Protected route for quiz page */}
             <Route element={<ProtectedRoutes />}>
-              <Route path="/quiz" element={<QuizPage />} />
+              <Route path="/quiz-dashboard" element={<QuizDashboard />} />
             </Route>
+
+            {/* Catch-all route for 404 Not Found */}
+            <Route path="*" element={<Notfound />} />
           </Routes>
         </div>
       </div>
