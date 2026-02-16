@@ -1,11 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useUser from "../hooks/userHooks";
 
 const Login = () => {
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Collect email and password from the form
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    
+    if (!email || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    // Here you would typically call an API to authenticate the user
+
+  };
+
   return (
     <div>
       <h1 className="text-center">Quiz App - Login</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleLogin}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required />

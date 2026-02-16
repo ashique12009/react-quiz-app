@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useUser from "../hooks/userHooks";
+import CryptoJS from "crypto-js";
 
 const Registration = () => {
   const { registerUser } = useUser();
@@ -17,13 +18,24 @@ const Registration = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    registerUser({ name, email, password });
+    if (!name || !email || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const hashedPassword = hashPassword(password);
+
+    registerUser({ name, email, password: hashedPassword });
 
     // Navigate to the login page after successful registration
     navigate("/login");
 
     // Reset the form after submission
     // e.target.reset();
+  };
+
+  const hashPassword = (password) => {
+    return CryptoJS.SHA256(password).toString();
   };
 
   return (

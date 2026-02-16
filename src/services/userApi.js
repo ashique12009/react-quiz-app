@@ -1,5 +1,6 @@
 const API_URL = "http://localhost:3001/users";
 
+// Fetch all users
 export const fetchUsers = async () => {
   try {
     const response = await fetch(API_URL);
@@ -14,6 +15,22 @@ export const fetchUsers = async () => {
   }
 }
 
+// Fetch a user by email (for login)
+export const fetchUserByEmail = async (email) => {
+  try {
+    const response = await fetch(`${API_URL}?email=${email}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch user");
+    }
+    const data = await response.json();
+    return data.length > 0 ? data[0] : null; // Return the first user if found, otherwise null
+  } catch (error) {
+    console.error("Error fetching user by email:", error);
+    throw error;
+  }
+}
+
+// Register a new user
 export const registerUser = async (userData) => {
   try {
     const response = await fetch(API_URL, {
