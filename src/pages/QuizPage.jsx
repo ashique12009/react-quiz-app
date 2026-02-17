@@ -4,7 +4,6 @@ import Question from "../components/Question";
 
 const QuizPage = () => {
   const { questions } = useQuestion();
-  console.log("Fetched questions:", questions);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -21,12 +20,16 @@ const QuizPage = () => {
   const handleAnswer = (selectedAnswer) => {
     const currentQuestion = questions[currentQuestionIndex];
 
-    console.log("Selected answer:", selectedAnswer);
-    console.log("Correct answer:", currentQuestion.answer);
-
     // Check if the selected answer is correct
     if (selectedAnswer === currentQuestion.answer) {
       setScore(score + 1);
+    }
+
+    // Move to the next question or finish the quiz
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      setIsFinished(true);
     }
   };
 
