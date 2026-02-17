@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useQuestion from "../hooks/questionHooks";
 import Question from "../components/Question";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../auth/auth";
 
 const QuizPage = () => {
   const navigate = useNavigate();
