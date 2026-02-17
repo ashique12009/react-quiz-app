@@ -8,7 +8,7 @@ JSON-Server is the database here.
 
 ## Authentication
 
-Use crypto-js to make hash of password
+Use crypto-js to make hash of password, Route gaurd is there so no one can enter in auth pages without logging in.
 
 ## Few Screenshots:
 Login screen:
