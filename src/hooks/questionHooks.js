@@ -18,7 +18,7 @@ const useQuestion = () => {
     fetchQuestions();
   }, []);
 
-  return { questions, fetchQuestions };
+  return { questions };
 };
 
 export default useQuestion;
