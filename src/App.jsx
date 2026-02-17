@@ -4,6 +4,7 @@ import Registration from "./pages/Registration";
 import QuizDashboard from "./pages/QuizDashboard";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Notfound from "./pages/Notfound";
+import QuizPage from "./pages/QuizPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             {/* Protected route for quiz page */}
             <Route element={<ProtectedRoutes />}>
               <Route path="/quiz-dashboard" element={<QuizDashboard />} />
+              <Route path="/quiz-page" element={<QuizPage />} />
             </Route>
 
             {/* Catch-all route for 404 Not Found */}

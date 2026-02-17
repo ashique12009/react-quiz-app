@@ -1,10 +1,7 @@
 import React from "react";
-import { logout } from "../auth/auth";
-import { useNavigate } from "react-router-dom";
+import Question from "../components/Question";
 
-const QuizDashboard = () => {
-  const navigate = useNavigate();
-
+const QuizPage = () => {
   // Handle logout functionality
   const handleLogout = () => {
     logout();
@@ -25,13 +22,9 @@ const QuizDashboard = () => {
         </button>
       </header>
 
-      <div className="quiz-welcome-text mt10">
-        <p className="text-center">Test your knowledge with these quizzes!</p>
-        <button className="primary-button" onClick={() => navigate("/quiz-page")}>Start Quiz</button>
-      </div>
-
+      <Question />
     </div>
   );
 };
 
-export default QuizDashboard;
+export default QuizPage;
