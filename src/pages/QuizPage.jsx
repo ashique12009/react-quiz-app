@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import useQuestion from "../hooks/questionHooks";
 import Question from "../components/Question";
+import { useNavigate } from "react-router-dom";
 
 const QuizPage = () => {
+  const navigate = useNavigate();
   const { questions } = useQuestion();
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -16,6 +18,10 @@ const QuizPage = () => {
     // Redirect to login page
     navigate("/login");
   };
+
+  const restartQuiz = () => {
+    navigate("/quiz-dashboard");
+  }
 
   const handleAnswer = (selectedAnswer) => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -42,6 +48,7 @@ const QuizPage = () => {
       <div className="text-center">
         <h2>Quiz Finished!</h2>
         <p>Your score: {score} out of {questions.length}</p>
+        <button className="primary-button" onClick={restartQuiz}>Restart Quiz</button>
       </div>
     );
   }
