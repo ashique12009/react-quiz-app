@@ -3,10 +3,13 @@ import useUser from "../hooks/userHooks";
 import { hashPassword } from "../utils/hash";
 import { setAuthUser } from "../auth/auth";
 import { isAuthenticated } from "../auth/auth";
+import Toaster from "../components/Toaster";
+import { useState } from "react";
 
 const Login = () => {
   const { fetchUserByEmail } = useUser();
   const navigate = useNavigate();
+  const [toastMessage, setToastMessage] = useState("");
 
   if (isAuthenticated()) {
     return <Navigate to="/quiz-dashboard" replace />;
@@ -19,7 +22,7 @@ const Login = () => {
     const password = e.target.password.value;
 
     if (!email || !password) {
-      alert("Please fill in all fields.");
+      setToastMessage("Please fill in all fields.");
       return;
     }
 
@@ -33,7 +36,7 @@ const Login = () => {
       setAuthUser(user);
       navigate("/quiz-dashboard", { replace: true });
     } else {
-      alert("Invalid email or password.");
+      return setToastMessage("Invalid email or password. Please try again.");
     }
   };
 
@@ -49,9 +52,10 @@ const Login = () => {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit" className="login-button">
+        <button type="submit" className="login-button mb10">
           Login
         </button>
+        {toastMessage && <Toaster message={toastMessage} />}
         <div className="additional-links">
           <a href="#" className="forgot-password">
             Forgot Password?
