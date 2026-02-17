@@ -10,7 +10,10 @@ JSON-Server is the database here.
 
 Use crypto-js to make hash of password, Route gaurd is there so no one can enter in auth pages without logging in.
 
-## Few Screenshots:
+## Few Screenshots and workflow of the project:
+Full Work Flow:
+<img src="https://github.com/user-attachments/assets/1c9f8c67-a085-4988-894f-f28ea95de6e5" />
+
 Login screen:
 <img width="1238" height="932" alt="Image" src="https://github.com/user-attachments/assets/034fc32f-0cd7-4dd1-8533-dcb633dd18c2" />
 

@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "1",
-      "name": "Admin User",
+      "name": "John Doe",
       "email": "admin@email.com",
       "password": "12345678"
     },
@@ -23,25 +23,46 @@
       "name": "user2",
       "email": "user2@email.com",
       "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+    },
+    {
+      "id": "17f2",
+      "name": "Jane Doe",
+      "email": "jane@email.com",
+      "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
     }
   ],
   "questions": [
     {
       "id": "1",
       "questionText": "What is the capital of France?",
-      "options": ["Berlin", "Madrid", "Paris", "Rome"],
+      "options": [
+        "Berlin",
+        "Madrid",
+        "Paris",
+        "Rome"
+      ],
       "answer": "Paris"
     },
     {
       "id": "2",
       "questionText": "Which planet is known as the Red Planet?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+      "options": [
+        "Earth",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
       "answer": "Mars"
     },
     {
       "id": "3",
       "questionText": "What is the largest ocean on Earth?",
-      "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+      "options": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
       "answer": "Pacific Ocean"
     }
   ]
