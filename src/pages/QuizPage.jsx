@@ -47,8 +47,8 @@ const QuizPage = () => {
     return (
       <div className="text-center">
         <h2>Quiz Finished!</h2>
-        <p>Your score: {score} out of {questions.length}</p>
-        <button className="primary-button" onClick={restartQuiz}>Restart Quiz</button>
+        <p className="mt10">Your score: {score} out of {questions.length}</p>
+        <button className="primary-button mt10" onClick={restartQuiz}>Restart Quiz</button>
       </div>
     );
   }
@@ -68,7 +68,8 @@ const QuizPage = () => {
       <Question
         question={questions[currentQuestionIndex]} 
         onAnswer={handleAnswer} 
-        totalQuestions={questions.length}
+        totalQuestions={questions.length} 
+        score={score}
       />
     </div>
   );

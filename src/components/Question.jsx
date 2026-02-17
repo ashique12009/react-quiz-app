@@ -1,6 +1,6 @@
 import React from "react";
 
-const Question = ({ onAnswer, question, totalQuestions }) => {
+const Question = ({ onAnswer, question, totalQuestions, score }) => {
 
   if (!question) {
     return null;
@@ -15,7 +15,7 @@ const Question = ({ onAnswer, question, totalQuestions }) => {
             <span>
               Question {question.id} of {totalQuestions}
             </span>
-            <span>Score: 0</span>
+            <span>Score: {score}</span>
           </div>
           <div className="answer-container mt10">
             {question.options.map((option, index) => (
